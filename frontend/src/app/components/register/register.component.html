@@ -1,0 +1,81 @@
+<div class="box">
+  <form [formGroup]="registerForm" (ngSubmit)="registerSubmitted()">
+    <div class="row">
+      <div class="col">
+        <h1>Register</h1>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col">
+        <label>Full Name:</label><br />
+        <input
+          type="text"
+          [(ngModel)]="fullname" 
+          class="form-control"
+          placeholder="Enter your name"
+          id="fullname"
+          formControlName="fullname"
+        />
+        <div class="form-text text-danger" *ngIf="Fullname.errors?.['required'] &&
+        (Fullname.touched || Fullname.dirty)" >
+            Name is required.
+        </div>
+        <div class="form-text text-danger" *ngIf="Fullname.errors?.['minlength'] &&
+        (Fullname.touched || Fullname.dirty)" >
+            Name is too short.
+        </div>
+        <div class="form-text text-danger" *ngIf="Fullname.errors?.['pattern'] &&
+        (Fullname.touched || Fullname.dirty)" >
+            Name should start with alphabet only.
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label>E-mail</label><br />
+        <input
+          type="email"
+          [(ngModel)]="email" 
+          class="form-control"
+          id="email"
+          placeholder="Enter your email"
+          formControlName="email"
+        />
+      </div>
+    </div>
+    <div class="form-text text-danger" *ngIf="Email.errors?.['required'] &&
+    (Email.touched || Email.dirty)" >
+        Email is required.
+    </div>
+    <div class="form-text text-danger" *ngIf="Email.errors?.['email'] &&
+    (Email.touched || Email.dirty)" >
+        Email is invalid.
+    </div>
+    <div class="row">
+      <div class="col">
+        <label>Password:</label><br />
+        <input
+          type="paasword"
+          [(ngModel)]="password" 
+          class="form-control"
+          placeholder="Enter password"
+          id="password"
+          formControlName="password"
+        />
+        <div class="form-text text-danger" *ngIf="Password.errors?.['required'] &&
+    (Password.touched || Password.dirty)" >
+        Password is required.
+    </div>
+    <div class="form-text text-danger" *ngIf="Password.errors?.['minlength'] || Password.errors?.['maxlength'] &&
+    (Password.touched || Password.dirty)" >
+        Password should be in range of 8 to 12.
+    </div>
+       
+       
+      </div>
+    </div>
+    <br />
+    <button type="submit" [disabled]="registerForm.invalid"  (click)="register()">Submit</button>
+  </form>
+</div>
