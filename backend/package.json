@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start:frontend":"cd frontend && ng serve"
+    "start:backend":"cd backend && node index.js"
     "test": "echo \"Error: no test specified\" && exit 1"
    
   },
